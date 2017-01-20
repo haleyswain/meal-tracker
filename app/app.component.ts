@@ -8,27 +8,9 @@ import { Food } from './food.model';
   template: `
   <div class="container">
     <h1>Meal Tracker</h1>
-    <food-list></food-list>
+    <food-list [childFoodList]="masterFoodList" (clickSender)="editFood($event)"></food-list>
   <hr>
-  <div class="edit-food" *ngIf="currentFood">
-    <h4>Edit Food</h4>
-    <div class="form-group">
-      <label htmlFor="edit-food-name">Name</label>
-      <input type="text" class="form-control"
-      [(ngModel)]="currentFood.name" id="edit-food-name"/>
-    </div>
-    <div class="form-group">
-      <label htmlFor="edit-food-details">Details</label>
-      <input type="text" class="form-control"
-      [(ngModel)]="currentFood.details" id="edit-food-details"/>
-    </div>
-    <div class="form-group">
-      <label htmlFor="edit-keg-calories">Calories</label>
-      <input type="text" class="form-control"
-      [(ngModel)]="currentFood.calories" id="edit-food-calories"/>
-      <button class="btn btn-warning" (click)="closeEditFoodForm()">Close Edit Form</button>
-    </div>
-    </div>
+    <edit-food [childSelectedFood]="selectedFood" (closeEditFoodFormSender)="finishedEditing()"></edit-food>
     <button class="btn btn-success" (click)="showNewFoodForm()">Add New Food</button>
     <div class="new-food" *ngIf="newFood">
       <h4>New Food</h4>
@@ -51,15 +33,21 @@ import { Food } from './food.model';
 })
 
 export class AppComponent {
-
+  selectedFood = null;
+  masterFoodList: Food[] = [
+    new Food("Cheesburger", "Didn't come with Onions", 450),
+    new Food("Apple", "Honeycrisp from Washington", 90),
+    new Food("Chef Salad", "Forgot the tomatoes", 300)
+  ];
 
   newFood = null;
-  currentFood = null;
 
+  editFood(clickedFood) {
+    this.selectedFood = clickedFood;
+  }
 
-
-  closeEditFoodForm() {
-    this.currentFood = null;
+  finishedEditing() {
+    this.selectedFood = null;
   }
   showNewFoodForm() {
     this.newFood = {};

@@ -1,30 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Food } from './food.model';
 
 
 @Component({
   selector: 'food-list',
   template: `
-  <div [class]="foodList" *ngFor="let food of foods">
-    <h3>{{food.name}}</h3>
-    <h5>Details: {{food.details}}</h5>
-    <h5>Calories: {{food.calories}}</h5>
-    <button class="btn btn-info edit" (click)="showEditFoodForm(food)">Edit</button>
+  <div [class]="foodList" *ngFor="let currentFood of childFoodList">
+    <h3>{{currentFood.name}}</h3>
+    <h5>Details: {{currentFood.details}}</h5>
+    <h5>Calories: {{currentFood.calories}}</h5>
+    <button class="btn btn-info edit" (click)="editButtonHasBeenClicked(currentFood)">Edit</button>
   </div>
   `
 })
 
 export class FoodListComponent {
-  foods: Food[] = [
-    new Food("Cheesburger", "Didn't come with Onions", 450),
-    new Food("Apple", "Honeycrisp from Washington", 90),
-    new Food("Chef Salad", "Forgot the tomatoes", 300)
-  ];
+  @Input() childFoodList: Food[];
+  @Output() clickSender = new EventEmitter();
 
-  newFood = null;
 
-  showEditFoodForm(food) {
-     this.currentFood = food;
+
+  editButtonHasBeenClicked(foodToEdit) {
+     this.clickSender.emit(foodToEdit);
    }
  }
-}
