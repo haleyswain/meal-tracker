@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'my-app',
   template: `
@@ -83,6 +84,6 @@ export class Food {
   constructor(
     public name: string,
     public details: string,
-    public calories: number,
+    public calories: number
   ) {};
 }
