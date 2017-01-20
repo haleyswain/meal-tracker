@@ -1,0 +1,14 @@
+{
+  "name": "meal tracker",
+  "description": "",
+  "main": "",
+  "license": "ISC",
+  "homepage": "https://github.com/haleyswain/dictionary",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
