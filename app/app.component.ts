@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Food } from './food.model';
+
 
 
 @Component({
@@ -6,12 +8,7 @@ import { Component } from '@angular/core';
   template: `
   <div class="container">
     <h1>Meal Tracker</h1>
-    <div [class]="foodList" *ngFor="let food of foods">
-      <h3>{{food.name}}</h3>
-      <h5>Details: {{food.details}}</h5>
-      <h5>Calories: {{food.calories}}</h5>
-      <button class="btn btn-info edit" (click)="showEditFoodForm(food)">Edit</button>
-    </div>
+    <food-list></food-list>
   <hr>
   <div class="edit-food" *ngIf="currentFood">
     <h4>Edit Food</h4>
@@ -54,19 +51,13 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  foods: Food[] = [
-    new Food("Cheesburger", "Didn't come with Onions", 450),
-    new Food("Apple", "Honeycrisp from Washington", 90),
-    new Food("Chef Salad", "Forgot the tomatoes", 300)
-  ];
+
 
   newFood = null;
   currentFood = null;
 
 
-  showEditFoodForm(food) {
-    this.currentFood = food;
-  }
+
   closeEditFoodForm() {
     this.currentFood = null;
   }
@@ -78,12 +69,4 @@ export class AppComponent {
     this.foods.push(food);
     this.newFood = null;
   }
-}
-
-export class Food {
-  constructor(
-    public name: string,
-    public details: string,
-    public calories: number
-  ) {};
 }
