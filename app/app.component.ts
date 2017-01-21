@@ -8,11 +8,12 @@ import { Food } from './food.model';
   template: `
   <div class="container">
     <h1>Meal Tracker</h1>
+    <hr>
     <food-list [childFoodList]="masterFoodList" (clickSender)="editFood($event)"></food-list>
-  <hr>
+    <hr>
     <edit-food [childSelectedFood]="selectedFood" (closeEditFoodFormSender)="finishedEditing()"></edit-food>
     <new-food (newFoodSender)="addFood($event)"></new-food>
-    </div>
+  </div>
   `
 })
 

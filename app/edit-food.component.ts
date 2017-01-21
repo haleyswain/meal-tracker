@@ -20,10 +20,10 @@ import { Food } from './food.model';
       <label htmlFor="edit-keg-calories">Calories</label>
       <input type="text" class="form-control"
       [(ngModel)]="childSelectedFood.calories" id="edit-food-calories"/>
-      <button class="btn btn-warning" (click)="closeEditFoodForm()">Close Edit Form</button>
+      <br>
+      <button class="btn btn-warning" (click)="closeEditFoodForm()">Done Editing</button>
     </div>
-    </div>
-
+  </div>
 `
 })
 

@@ -15,7 +15,7 @@ import { Food } from './food.model';
     <h3>{{currentFood.name}}</h3>
     <h5>Details: {{currentFood.details}}</h5>
     <h5>Calories: {{currentFood.calories}}</h5>
-    <button class="btn btn-info edit" (click)="editButtonHasBeenClicked(currentFood)">Edit</button>
+    <button class="btn btn-danger edit" (click)="editButtonHasBeenClicked(currentFood)">Edit</button>
   </div>
   `
 })
