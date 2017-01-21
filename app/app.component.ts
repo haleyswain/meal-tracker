@@ -20,7 +20,7 @@ export class AppComponent {
   selectedFood = null;
   newFood = null;
   masterFoodList: Food[] = [
-    new Food("Cheesburger", "Didn't come with Onions", 450),
+    new Food("Cheesburger", "Didn't come with Onions", 700),
     new Food("Apple", "Honeycrisp from Washington", 90),
     new Food("Chef Salad", "Forgot the tomatoes", 300)
   ];
